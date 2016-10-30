@@ -1,5 +1,11 @@
 {
   "MailSettings": {
-    "ToAddress" :  "fatihbulut1991@gmail.com" 
-  } 
+    "ToAddress": "fatihbulut1991@gmail.com"
+  },
+  "ConnectionStrings": {
+    "WorldContextConnection": "Server=(localdb)\\MSSQLLocalDB;Database=TheWorldDb;Trusted_Connection=true;MultipleActiveResultSets=true;"
+  },
+  "Keys": {
+    "BingKey" :  "DONTUSE"
+  }
 }

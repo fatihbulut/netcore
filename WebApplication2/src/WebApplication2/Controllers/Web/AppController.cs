@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using WebApplication2.Services;
 using WebApplication2.ViewModels;
+using WebApplication2.Models;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApplication2.Controllers.Web
 {
@@ -14,16 +17,47 @@ namespace WebApplication2.Controllers.Web
     {
         private IMailService _mailService;
         private IConfigurationRoot _config;
+        private IWorldRepository _repository;
+        private ILogger<AppController> _logger;
 
-        public AppController(IMailService mailService, IConfigurationRoot config)
+        public AppController(IMailService mailService, 
+            IConfigurationRoot config, 
+            IWorldRepository repository,
+            ILogger<AppController> logger) 
         {
             _mailService = mailService;
             _config = config;
+            _repository = repository;
+            _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View();
+            try
+            {
+                return View();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Failed to get all trips in Index Page");
+                return Redirect("/error");
+            }
+        }
+
+        [Authorize]
+        public IActionResult Trips()
+        {
+            try
+            {
+                var data = _repository.GetAllTrips();
+
+                return View(data);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("");
+            }
+
         }
 
         public IActionResult Contact()

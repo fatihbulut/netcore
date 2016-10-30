@@ -1,21 +1,12 @@
-﻿@{
+﻿@model IEnumerable<WebApplication2.Models.Trip>
+@{
     ViewBag.Title = "Home Page";
 }
-<!DOCTYPE html>
-<h1>The World</h1>
-<p>This will be a website</p>
 
-<form>
-    <div>
-        <label>Date</label>
-        <input />
-    </div>
-    <div>
-        <label>location</label>
-        <input />
-    </div>
-    <div>
-        <input type="submit" value="Add" />
-    </div>
-
-</form>
+<div class="row">
+   <div class="col-md-12">
+       <h1>Welcome to the World</h1>
+       <p>This app will allow you to plan trips</p>
+       <a asp-controller="App" asp-action="trips" class="btn btn-lg btn-success">View My Trips</a>
+   </div>
+</div>
