@@ -50,6 +50,7 @@ namespace WebApplication2
             else
             {
                 // Implement a real Mail Service
+                services.AddScoped<IMailService, DebugMailService>();
             }
 
             services.AddDbContext<WorldContext>();
@@ -66,7 +67,7 @@ namespace WebApplication2
             {
                 if (_env.IsProduction())
                 {
-                    config.Filters.Add(new RequireHttpsAttribute());
+                    //config.Filters.Add(new RequireHttpsAttribute());
                 }
                 
             })

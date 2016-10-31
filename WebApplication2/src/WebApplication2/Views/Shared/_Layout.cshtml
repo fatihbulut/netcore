@@ -23,11 +23,11 @@
             <li class="active"><a asp-controller="App" asp-action="Index">Home</a></li>
             <li><a asp-controller="App" asp-action="About">About</a></li>
             <li><a asp-controller="App" asp-action="Contact">Contact</a></li>
-@if (User.Identity.IsAuthenticated)
-{
-            <li><a asp-controller="App" asp-action="Trips">Trips</a></li>
-            <li><a asp-controller="Auth" asp-action="Logout">Logout</a></li>
-}
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li><a asp-controller="App" asp-action="Trips">Trips</a></li>
+                <li><a asp-controller="Auth" asp-action="Logout">Logout</a></li>
+            }
         </ul>
     </div>
     <div id="wrapper">
@@ -56,7 +56,7 @@
             </div>
         </nav>
         <div id="main" class="container-fluid">
-            
+
             @RenderBody()
 
         </div>
@@ -68,9 +68,15 @@
     </div>
 
     <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
-@RenderSection("scripts", false);
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<environment names="Development">
     <script type="text/javascript" src="~/js/site.js"></script>
+</environment>
+    <environment names="Production,Staging">
+        <script type="text/javascript" src="~/lib/_app/site.js"></script>
+    </environment>
 
+
+    @RenderSection("scripts", false);
 </body>
 </html>

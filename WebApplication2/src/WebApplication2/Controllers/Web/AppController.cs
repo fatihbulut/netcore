@@ -49,9 +49,7 @@ namespace WebApplication2.Controllers.Web
         {
             try
             {
-                var data = _repository.GetAllTrips();
-
-                return View(data);
+                return View();
             }
             catch (Exception ex)
             {

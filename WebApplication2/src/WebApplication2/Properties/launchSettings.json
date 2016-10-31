@@ -13,7 +13,7 @@
       "launchBrowser": true,
       "environmentVariables": {
         "MailSettings__ToAddress": "bgates@gound.org",
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Production"
       }
     },
     "WebApplication2": {
